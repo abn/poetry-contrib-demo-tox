@@ -1,0 +1,41 @@
+[build-system]
+requires = ["poetry-core>=1.1.0b1"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "poetry-contrb-demo-tox"
+version = "0.1.0"
+description = ""
+authors = ["Planet Express <contact@planet.express.com>"]
+readme = "README.md"
+packages = [{include = "poetry", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+httpx = "^0.23.0"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.1.2"
+pytest-mock = "^3.7.0"
+httpretty = "^1.1.4"
+
+[tool.poetry.group.typing]
+optional = true
+
+[tool.poetry.group.typing.dependencies]
+mypy = "^0.960"
+
+[tool.poetry.group.linting]
+optional = true
+
+[tool.poetry.group.linting.dependencies]
+pre-commit = "^2.19.0"
+
+[tool.mypy]
+strict = true
+explicit_package_bases = true
+namespace_packages = true
+show_error_codes = true
+enable_error_code = ["ignore-without-code"]
+mypy_path = "src"
+files = "src, tests"
